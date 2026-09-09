@@ -1,0 +1,32 @@
+@use "variables" as v;
+
+.pagination-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: v.$spacing-small;
+    padding: v.$spacing-large;
+    flex-wrap: wrap;
+
+    button {
+        padding: 10px 16px;
+        border: none;
+        border-radius: v.$border-radius;
+        background-color: v.$color-secondary;
+        color: v.$color-text-light;
+        font-weight: 700;
+
+        &:hover:not(:disabled) {
+            opacity: 0.85;
+        }
+
+        &:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+    }
+
+    #current-page {
+        font-weight: 700;
+    }
+}

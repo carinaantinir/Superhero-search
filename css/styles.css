@@ -1,0 +1,164 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5f5f5;
+  color: #202020;
+  min-height: 100vh;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+header {
+  background-color: #202020;
+  color: #ffffff;
+  padding: 32px;
+  text-align: center;
+}
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.search-section {
+  padding: 32px;
+}
+.search-section h2 {
+  margin-bottom: 16px;
+}
+.search-section form {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: end;
+}
+.search-section label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.search-section input,
+.search-section select {
+  padding: 12px;
+  border: 1px solid #6b6b6b;
+  border-radius: 0;
+  background-color: #ffffff;
+}
+.search-section input {
+  min-width: 250px;
+  flex: 1;
+}
+.search-section button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 0;
+  background-color: #e62429;
+  color: #ffffff;
+  font-weight: 700;
+}
+.search-section button:hover {
+  opacity: 0.85;
+}
+
+.results-section {
+  padding: 32px;
+}
+.results-section h2 {
+  margin-bottom: 8px;
+}
+.results-section #results-count {
+  margin-bottom: 16px;
+  color: #6b6b6b;
+}
+
+#heroes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.hero-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.hero-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.hero-card h3 {
+  padding: 16px;
+}
+
+.pagination-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 32px;
+  flex-wrap: wrap;
+}
+.pagination-section button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #202020;
+  color: #ffffff;
+  font-weight: 700;
+}
+.pagination-section button:hover:not(:disabled) {
+  opacity: 0.85;
+}
+.pagination-section button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.pagination-section #current-page {
+  font-weight: 700;
+}
+
+.hero-detail {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+.hero-detail[hidden] {
+  display: none;
+}
+.hero-detail img {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto 32px;
+  border-radius: 8px;
+}
+.hero-detail h2 {
+  margin-bottom: 16px;
+  text-align: center;
+}
+.hero-detail p {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/*# sourceMappingURL=styles.css.map */
