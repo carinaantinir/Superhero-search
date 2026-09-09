@@ -1,0 +1,13 @@
+@use "variables" as v;
+
+header {
+    background-color: v.$color-secondary;
+    color: v.$color-text-light;
+    padding: v.$spacing-large;
+    text-align: center;
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+}

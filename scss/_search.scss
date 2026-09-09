@@ -1,0 +1,48 @@
+@use "variables" as v;
+
+.search-section {
+    padding: v.$spacing-large;
+
+    h2 {
+        margin-bottom: v.$spacing-medium;
+    }
+
+    form {
+        display: flex;
+        gap: v.$spacing-medium;
+        flex-wrap: wrap;
+        align-items: end;
+    }
+
+    label {
+        display: block;
+        margin-bottom: v.$spacing-small;
+        font-weight: 700;
+    }
+
+    input,
+    select {
+        padding: 12px;
+        border: 1px solid v.$color-muted;
+        border-radius: 0;
+        background-color: v.$color-surface;
+    }
+
+    input {
+        min-width: 250px;
+        flex: 1;
+    }
+
+    button {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 0 ;
+        background-color: v.$color-primary;
+        color: v.$color-text-light;
+        font-weight: 700;
+
+        &:hover {
+            opacity: 0.85;
+        }
+    }
+}

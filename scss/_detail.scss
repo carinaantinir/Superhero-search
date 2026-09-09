@@ -1,0 +1,30 @@
+@use "variables" as v;
+
+.hero-detail {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: v.$spacing-large;
+    background-color: v.$color-surface;
+    border-radius: v.$border-radius;
+
+    &[hidden] {
+        display: none;
+    }
+
+    img {
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto v.$spacing-large;
+        border-radius: v.$border-radius;
+    }
+
+    h2 {
+        margin-bottom: v.$spacing-medium;
+        text-align: center;
+    }
+
+    p {
+        margin-bottom: v.$spacing-small;
+        line-height: 1.5;
+    }
+}
