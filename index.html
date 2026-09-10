@@ -36,22 +36,21 @@
         
         <p id="results-count">0 resultados</p>
 
-        <div id="heroes-countainer">
-        </div>
+        <div id="heroes-container"></div>
         </section>
-        <section class="paginatón-section">
-            <button id="first-page" disabled>Primera</button>
-            <button id="previus-page">Anterior</button>
+       <section class="pagination-section">
+    <button id="first-page" type="button" disabled>Primera</button>
+    <button id="previous-page" type="button" disabled>Anterior</button>
 
-            <span id="current-page">Página 1</span>
+    <span id="current-page">Página 1</span>
 
-
-            <button id="next-page" disabled>Siguiente</button>
-            <button id="last-page" disabled>Última</button>
+    <button id="next-page" type="button" disabled>Siguiente</button>
+    <button id="last-page" type="button" disabled>Última</button>
+</section>
         </section>
         <section id="hero-detail" class="hero-detail" hidden>
         </section>
     </main>
-    <script src="./js/app.js"></script>
+    <script src="./js/app.js" defer></script>
 </body>
 </html>
