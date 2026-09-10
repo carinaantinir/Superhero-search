@@ -12,6 +12,8 @@ window.addEventListener("load", () => {
     const searchInput = document.querySelector("#search-input");
     const resultsCount = document.querySelector("#results-count");
     const sortSelect = document.querySelector("#sort-select");
+    const publisherFilter = document.querySelector("#publisher-filter");
+    const genderFilter = document.querySelector("#gender-filter");
 
     const resultsSection = document.querySelector(".results-section");
     const paginationSection = document.querySelector(".pagination-section");
@@ -38,6 +40,8 @@ window.addEventListener("load", () => {
     let heroes = [];
     let currentPage = 1;
     let currentSort = "asc";
+    let currentPublisher = "all";
+    let currentGender = "all";
     let heroImages = {};
 
     // ==========================
@@ -62,6 +66,29 @@ window.addEventListener("load", () => {
     // ==========================
     // UTILIDADES
     // ==========================
+
+    const loadPublisherOptions = () => {
+    if (!publisherFilter) return;
+
+    publisherFilter.innerHTML = '<option value="all">Todas</option>';
+
+    const publishers = [];
+
+    heroes.forEach((hero) => {
+        const publisher = hero.biography?.publisher;
+
+        if (publisher && !publishers.includes(publisher)) {
+            publishers.push(publisher);
+        }
+    });
+
+    publishers.forEach((publisher) => {
+        const option = document.createElement("option");
+        option.value = publisher;
+        option.textContent = publisher;
+        publisherFilter.appendChild(option);
+    });
+};
 
     const formatValue = (value) => {
         if (
@@ -98,9 +125,25 @@ window.addEventListener("load", () => {
     // ==========================
     // ORDENAMIENTO
     // ==========================
+    
+    const getFilteredHeroes = () => {
+    return heroes.filter((hero) => {
+        const matchesPublisher =
+            currentPublisher === "all" ||
+            hero.biography?.publisher === currentPublisher;
+
+        const matchesGender =
+            currentGender === "all" ||
+            hero.appearance?.gender === currentGender;
+
+        return matchesPublisher && matchesGender;
+    });
+};
+
+
 
     const getSortedHeroes = () => {
-        return [...heroes].sort((heroA, heroB) => {
+        return [...getFilteredHeroes()].sort((heroA, heroB) => {
             const nameA = heroA.name.toLowerCase();
             const nameB = heroB.name.toLowerCase();
 
@@ -119,7 +162,7 @@ window.addEventListener("load", () => {
     const getTotalPages = () => {
         return Math.max(
             1,
-            Math.ceil(heroes.length / HEROES_PER_PAGE)
+            Math.ceil(getFilteredHeroes().length / HEROES_PER_PAGE)
         );
     };
 
@@ -219,15 +262,15 @@ window.addEventListener("load", () => {
     };
 
     const renderResults = () => {
-        if (resultsCount) {
-            resultsCount.textContent = `${heroes.length} resultado${
-                heroes.length === 1 ? "" : "s"
-            }`;
-        }
+        const filteredHeroes = getFilteredHeroes();
+
+    if (resultsCount) {
+            resultsCount.textContent = `${filteredHeroes.length} resultado${filteredHeroes.length === 1 ? "" : "s"}`;
+}
 
         renderHeroes();
         renderPagination();
-    };
+};
 
     // ==========================
     // DETALLE
@@ -434,6 +477,7 @@ window.addEventListener("load", () => {
             }
 
             heroes = data.results;
+            loadPublisherOptions();
             currentPage = 1;
 
             renderResults();
@@ -492,6 +536,25 @@ window.addEventListener("load", () => {
         renderResults();
     }
 });
+
+publisherFilter?.addEventListener("change", (event) => {
+    currentPublisher = event.target.value;
+    currentPage = 1;
+
+    if (heroes.length > 0) {
+        renderResults();
+    }
+});
+
+genderFilter?.addEventListener("change", (event) => {
+    currentGender = event.target.value;
+    currentPage = 1;
+
+    if (heroes.length > 0) {
+        renderResults();
+    }
+});
+
 
     // ==========================
     // BOTONES PAGINACIÓN

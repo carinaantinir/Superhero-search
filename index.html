@@ -32,13 +32,24 @@
                 <option value="asc">A - Z</option>
                 <option value="desc">Z -A</option>
             </select>
+            <label for="publisher-filter">Editorial:</label>
+            <select id="publisher-filter">
+                <option value="all">Todas</option>
+            </select>
+            <label for="gender-filter">Género:</label>
+        <select id="gender-filter">
+                <option value="all">Todos</option>
+                <option value="Male">Masculino</option>
+                <option value="Female">Femenino</option>
+        </select>
+
         </div>
         
         <p id="results-count">0 resultados</p>
 
         <div id="heroes-container"></div>
         </section>
-       <section class="pagination-section">
+        <section class="pagination-section">
     <button id="first-page" type="button" disabled>Primera</button>
     <button id="previous-page" type="button" disabled>Anterior</button>
 
