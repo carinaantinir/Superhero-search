@@ -479,14 +479,19 @@ window.addEventListener("load", () => {
     // ==========================
 
     sortSelect?.addEventListener("change", (event) => {
-        currentSort = event.target.value;
+        const selectedSort = event.target.value;
 
-        currentPage = 1;
+            if (selectedSort !== "asc" && selectedSort !== "desc") {
+            return;
+    }
 
-        if (heroes.length > 0) {
-            renderResults();
-        }
-    });
+    currentSort = selectedSort;
+    currentPage = 1;
+
+    if (heroes.length > 0) {
+        renderResults();
+    }
+});
 
     // ==========================
     // BOTONES PAGINACIÓN
