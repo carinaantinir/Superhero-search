@@ -30,3 +30,21 @@
         font-weight: 700;
     }
 }
+
+@media (max-width: 600px) {
+    .pagination-section {
+        padding: v.$spacing-medium;
+        gap: v.$spacing-small;
+
+        button {
+            flex: 0 1 auto;
+            padding: 8px 10px;
+            font-size: 0.9rem;
+        }
+
+        #current-page {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}

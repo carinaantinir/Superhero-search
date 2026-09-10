@@ -37,6 +37,14 @@ header h1 {
   font-weight: 700;
 }
 
+@media (max-width: 600px) {
+  header {
+    padding: 16px;
+  }
+  header h1 {
+    font-size: 1.5rem;
+  }
+}
 .search-section {
   padding: 32px;
 }
@@ -77,6 +85,22 @@ header h1 {
   opacity: 0.85;
 }
 
+@media (max-width: 600px) {
+  .search-section {
+    padding: 16px;
+  }
+  .search-section form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .search-section input {
+    min-width: 0;
+    width: 100%;
+  }
+  .search-section button {
+    width: 100%;
+  }
+}
 .results-section {
   padding: 32px;
 }
@@ -109,6 +133,35 @@ header h1 {
   padding: 16px;
 }
 
+@media (max-width: 768px) {
+  .results-section {
+    padding: 16px;
+  }
+  #heroes-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hero-card img {
+    height: 260px;
+  }
+}
+@media (max-width: 480px) {
+  #heroes-container {
+    grid-template-columns: 1fr;
+  }
+  .hero-card img {
+    height: auto;
+  }
+}
+@media (max-width: 768px) {
+  #heroes-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  #heroes-container {
+    grid-template-columns: 1fr;
+  }
+}
 .pagination-section {
   display: flex;
   justify-content: center;
@@ -136,6 +189,21 @@ header h1 {
   font-weight: 700;
 }
 
+@media (max-width: 600px) {
+  .pagination-section {
+    padding: 16px;
+    gap: 8px;
+  }
+  .pagination-section button {
+    flex: 0 1 auto;
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+  .pagination-section #current-page {
+    width: 100%;
+    text-align: center;
+  }
+}
 .hero-detail {
   max-width: 900px;
   margin: 0 auto;
@@ -159,6 +227,37 @@ header h1 {
 .hero-detail p {
   margin-bottom: 8px;
   line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .hero-detail {
+    padding: 16px;
+  }
+  .hero-detail img {
+    max-width: 100%;
+    margin-bottom: 16px;
+  }
+  .hero-detail h2 {
+    font-size: 1.6rem;
+  }
+  .hero-detail p {
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 600px) {
+  .hero-detail {
+    padding: 16px;
+  }
+  .hero-detail h2 {
+    font-size: 1.7rem;
+  }
+  .hero-detail h3 {
+    font-size: 1.3rem;
+  }
+  .hero-detail p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
