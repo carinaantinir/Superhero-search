@@ -6,11 +6,15 @@
     z-index: 1000;
     overflow-y: auto;
     background-color: rgba(0, 0, 0, 0.85);
+    padding: v.$spacing-large;
+.hero-detail-card {
     max-width: 900px;
     margin: 0 auto;
     padding: v.$spacing-large;
     background-color: v.$color-surface;
     border-radius: v.$border-radius;
+}
+
 
     &[hidden] {
         display: none;
