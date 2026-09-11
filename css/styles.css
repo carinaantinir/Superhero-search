@@ -205,6 +205,11 @@ header h1 {
   }
 }
 .hero-detail {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.85);
   max-width: 900px;
   margin: 0 auto;
   padding: 32px;
