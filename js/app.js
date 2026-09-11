@@ -2,7 +2,7 @@
 
 window.addEventListener("load", () => {
     const HEROES_PER_PAGE = 20;
-    const ACCESS_TOKEN = "849c9ed4a4f7b944acf877b64c8cd9f0";
+    const ACCESS_TOKEN ="849c9ed4a4f7b944acf877b64c8cd9f0";
 
     // ==========================
     // ELEMENTOS DEL DOM
@@ -38,6 +38,7 @@ window.addEventListener("load", () => {
     // ==========================
 
     let heroes = [];
+    let allHeroes = [];
     let currentPage = 1;
     let currentSort = "asc";
     let currentPublisher = "all";
@@ -53,6 +54,7 @@ window.addEventListener("load", () => {
         try {
             const res = await fetch("https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/all.json");
             const data = await res.json();
+            allHeroes = data;
             data.forEach((h) => {
                 heroImages[h.id] = h.images;
             });
@@ -445,56 +447,16 @@ window.addEventListener("load", () => {
         heroesContainer.innerHTML = "";
 
         await loadHeroImages();
+        const searchTerm = heroName.toLowerCase();
 
-        const url = `https://www.superheroapi.com/api.php/${ACCESS_TOKEN}/search/${encodeURIComponent(heroName)}`;
-
-        try {
-            const response = await fetch(url);
-
-            if (!response.ok) {
-                throw new Error(`Error HTTP: ${response.status}`);
-            }
-
-            const data = await response.json();
-
-            if (
-                data.response === "error" ||
-                !Array.isArray(data.results)
-            ) {
-                heroes = [];
-                currentPage = 1;
-
-                if (resultsCount) {
-                    resultsCount.textContent = "0 resultados";
-                }
-
-                heroesContainer.innerHTML = "<p>No se encontraron superhéroes.</p>";
-
-                renderPagination();
-                return;
-            }
-
-            heroes = data.results;
+            heroes = allHeroes.filter((hero) =>
+            hero.name.toLowerCase().includes(searchTerm)
+        );
             loadPublisherOptions();
             currentPage = 1;
 
             renderResults();
-
-        } catch (error) {
-            console.error("Error al buscar superhéroes:", error);
-
-            heroes = [];
-            currentPage = 1;
-
-            if (resultsCount) {
-                resultsCount.textContent = "Error en la búsqueda";
-            }
-
-            heroesContainer.innerHTML = "<p>No se pudo conectar con la API.</p>";
-
-            renderPagination();
-        }
-    };
+        };
 
     // ==========================
     // FORMULARIO
