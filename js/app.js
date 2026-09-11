@@ -289,13 +289,11 @@ window.addEventListener("load", () => {
 
         const imageUrl = getImageUrl(hero, "lg");
 
-        if (resultsSection) {
-            resultsSection.hidden = true;
-        }
+        
+    
+        heroDetail.hidden = false;
+    
 
-        if (paginationSection) {
-            paginationSection.hidden = true;
-        }
 
         heroDetail.hidden = false;
 
